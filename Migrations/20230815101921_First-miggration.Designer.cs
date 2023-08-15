@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace UrlShort.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20230814134835_Fourth4-miggration")]
-    partial class Fourth4miggration
+    [Migration("20230815101921_First-miggration")]
+    partial class Firstmiggration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,8 +21,11 @@ namespace UrlShort.Migrations
             modelBuilder.Entity("UrlShort.Models.IpInfo", b =>
                 {
                     b.Property<int>("IpInfoId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Continent")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Country")
                         .IsRequired()
@@ -36,11 +39,10 @@ namespace UrlShort.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UserType")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("ShortUrlId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("continent")
+                    b.Property<string>("UserType")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -99,8 +101,13 @@ namespace UrlShort.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("IpInfoId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("IpAddress")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ShortUrl")
                         .IsRequired()
@@ -115,9 +122,18 @@ namespace UrlShort.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IpInfoId");
-
                     b.ToTable("Urls");
+                });
+
+            modelBuilder.Entity("UrlShort.Models.IpInfo", b =>
+                {
+                    b.HasOne("UrlShort.Models.UrlManagment", "ShortUrl")
+                        .WithMany("IpInfo")
+                        .HasForeignKey("IpInfoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ShortUrl");
                 });
 
             modelBuilder.Entity("UrlShort.Models.Stat", b =>
@@ -133,17 +149,8 @@ namespace UrlShort.Migrations
 
             modelBuilder.Entity("UrlShort.Models.UrlManagment", b =>
                 {
-                    b.HasOne("UrlShort.Models.IpInfo", "IpInfo")
-                        .WithMany()
-                        .HasForeignKey("IpInfoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("IpInfo");
-                });
 
-            modelBuilder.Entity("UrlShort.Models.UrlManagment", b =>
-                {
                     b.Navigation("Stat");
                 });
 #pragma warning restore 612, 618

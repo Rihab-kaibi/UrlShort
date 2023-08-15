@@ -10,9 +10,9 @@
         public string IpAddress { get; set; } = "";
         public string Country { get; set; } = "";
         // Navigation property for IpInfo
-        public IpInfo? IpInfo { get; set; }
-        public int? IpInfoId { get; set; }
-
+       
+      
+        public ICollection<IpInfo> IpInfo { get; set; }
 
         public ICollection<Stat> Stat { get; set; }
 

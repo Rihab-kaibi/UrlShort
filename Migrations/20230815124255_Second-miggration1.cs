@@ -5,7 +5,7 @@
 namespace UrlShort.Migrations
 {
     /// <inheritdoc />
-    public partial class Second22migration : Migration
+    public partial class Secondmiggration1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

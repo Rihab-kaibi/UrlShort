@@ -8,5 +8,7 @@
         public string ISP { get; set; } = "";
         public string UserType { get; set; } = "";
         public string Continent { get; set; } = "";
+        public int ShortUrlId { get; set; }
+        public virtual UrlManagment ShortUrl { get; set; }
     }
 }
