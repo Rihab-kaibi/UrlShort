@@ -1,0 +1,66 @@
+<!-- <div class="top-right-component">
+  <app-bar-chart></app-bar-chart>
+</div> -->
+ 
+
+<!-- Your table and pagination code goes here -->
+
+ <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+        <tr>
+            <th class="thead">Shortened Links </th>
+            <th class="thead">Visits</th>
+         </tr>
+    </thead>
+    <tbody>
+      
+        <tr *ngFor="let url of urls " (click)="showUrlDetails(url.ShortUrlId)">
+            <td>
+                      <span class="row">
+
+                        <a routerLink = "/details/{{url.id}}"> <p class="fw-bold mb-1"> {{ url.shortUrl }} </p></a>   
+                      </span>
+                        <!-- <p class="text-muted mb-0">{{ url.url | slice:0:30 }}{{ url.url.length > 15 ? '...' : '' }}</p> -->
+                        <p class="text-muted mb-0 overme">{{ url.url }}</p>
+            
+                      </td>
+
+ 
+            <td>{{ url.visits }}</td>
+            <!-- <td  >
+              <div *ngFor="let infoCounter of infoCounters">
+                 
+               <a (click)="onColumnClick(infoCounter.shortUrlId)">Voir Détails</a> </div>
+
+            </td> -->
+        </tr>
+    </tbody>
+</table>
+<nav aria-label="...">
+    <ul class="pagination pagination-circle">
+      <li class="page-item">
+        <button class="page-link" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+      </li>
+      <ng-container *ngIf="currentPage > 2">
+        <li class="page-item"><a class="page-link" href="#">{{ currentPage - 2 }}</a></li>
+      </ng-container>
+      <ng-container *ngIf="currentPage > 1">
+        <li class="page-item"><a class="page-link" href="#">{{ currentPage - 1 }}</a></li>
+      </ng-container>
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">{{ currentPage }}</a>
+      </li>
+      <ng-container *ngIf="currentPage < totalPages">
+        <li class="page-item"><a class="page-link" href="#">{{ currentPage + 1 }}</a></li>
+      </ng-container>
+      <ng-container *ngIf="currentPage < totalPages - 1">
+        <li class="page-item"><a class="page-link" href="#">{{ currentPage + 2 }}</a></li>
+      </ng-container>
+      <li class="page-item">
+        <button class="page-link" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+      </li>
+    </ul>
+  </nav>
+  <!-- <app-bar-chart></app-bar-chart> -->
+ <!-- <app-pie-chart></app-pie-chart> -->
+ <!-- <app-ip-info></app-ip-info> -->

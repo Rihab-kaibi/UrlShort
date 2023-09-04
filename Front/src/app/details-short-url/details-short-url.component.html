@@ -1,0 +1,15 @@
+<div *ngIf="urlDetails">
+    <div class="short-url-section">
+        <p><strong>{{ urlDetails.shortUrl }} </strong> </p>
+        <!-- <span class="badge badge-secondary">{{ urlDetails.visitCount }}</span> -->
+        <button rippleColor="light" type="button" class="btn btn-dark">{{ urlDetails.visitCount }}</button>
+        <a [href]="urlDetails.longUrl" target="_blank" class="go-to-page-button">Go to Page</a>
+    </div>
+    <p class="fs-3">{{ urlDetails.title }}</p> <p>{{ urlDetails.description }} </p>
+
+</div>
+<div *ngIf="!urlDetails">
+    <p>Loading URL details...</p>
+</div>
+<app-pie-chart></app-pie-chart>
+<!-- <app-ip-info></app-ip-info> -->

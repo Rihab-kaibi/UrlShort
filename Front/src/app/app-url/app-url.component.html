@@ -1,0 +1,83 @@
+<div class="main-container">
+
+  <div class="card text-center w-250 mb-4 mt-4 custom-card">
+    <div class="card-body  ">
+      <h5 class="card-title">Link to Shorten</h5>
+      <div *ngIf="shortening === 'Random'">
+        <form (ngSubmit)="createShortUrl()">
+          <div class="row">
+
+            <!-- <div class="col-md-2">
+          <label mdbLabel class="form-label oronge mr-2" for="longUrl">Long URL:</label>
+        </div> -->
+          <div class="col-md-9">
+          <input type="url" id="typeURL" class="form-control form-control-sm mb-4 mr-md-2" id="longUrl"
+            [(ngModel)]="longUrl" name="longUrl" placeholder="Enter Long URL">
+        </div>
+          <div class="col-md-3">
+            <button type="button  " class="btn btn-success btn-sm mb-2 " type="submit" mdbRipple>Create Short URL</button>
+          </div>
+        </div>
+        </form>
+      </div>
+       <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div *ngIf="shortening=== 'Custom'">
+
+            <form (ngSubmit)="createShortUrlCustom()">
+              <label mdbLabel class="form-label oronge " for="longUrl">Long URL:</label>
+              <input type="url" id="typeURL" class="form-control mb-2" id="longUrl" [(ngModel)]="longUrl" name="longUrl"
+                placeholder="Enter Long URL">
+              <label mdbLabel for="customShortUrl" class="form-label oronge " for="form1">Custom Short URL:</label>
+              <input type="url" id="typeURL" class="form-control mb-2" class="form-control" id="shortUrl"
+                [(ngModel)]="shortUrl" name="shortUrl" placeholder="Enter Custom Short URL">
+              <button type="button" class="btn btn-success mb-2" type="submit" mdbRipple>Create Custom Short
+                URL</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Carte pour la sélection de la méthode -->
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Method</h5>
+      <div class="row">
+        <div class="col-md-6">
+          <button (click)="setRandom()" class="btn btn-violet btn-block" type="button" mdbRipple>Random</button>
+        </div>
+        <div class="col-md-6">
+          <button (click)="setCustom()" class="btn btn-violet btn-block" type="button" mdbRipple>Custom</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Carte pour l'affichage du résultat -->
+  <div *ngIf="shortUrl" class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Result</h5>
+      <div>
+        <p>Short URL: <a [href]="shortUrl" target="_blank">{{ shortUrl }}</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte pour le bouton "Generate QR Code" -->
+  <div *ngIf="shortUrl"  class="card">
+    <div class="card-body">
+      <button *ngIf="!showQRCode" (click)="generateQRCode()" class="btn btn-info" mdbRipple>Generate QR Code</button>
+      <div *ngIf="showQRCode">
+        <img [src]="qrCodeImageUrl" alt="QR Code" class="img-thumbnail" style="max-width: 150px; max-height: 150px;">
+        <!-- <button *ngIf="showQRCode" (click)="hideQRCode()">Generate QR Code</button> -->
+      </div>
+      <!-- <img src={{qrCodeImageUrl}} class="img-thumbnail" style="max-width: 110px; max-height: 110px;" /> -->
+    </div>
+  </div>
+</div>

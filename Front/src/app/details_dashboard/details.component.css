@@ -1,0 +1,23 @@
+/* .text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+.top-right-component {
+    position: fixed;  
+    top: 60mm;  
+    right: 20mm;  
+    padding: 10px;  
+    z-index: 1000;   
+   }
+
+} */   .thead{
+   Color: 'rgba(75, 192, 192, 0.2)';}
+    .overme {
+        width: 300px;
+        overflow:hidden; 
+        white-space:nowrap; 
+        text-overflow: ellipsis;
+        color: red;
+    }

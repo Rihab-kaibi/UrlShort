@@ -1,0 +1,15 @@
+<table  class="table table-borderless">
+    <thead>
+      <tr>
+        <th class="thead">Countries</th>
+        <th class="thead">Total des visites</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let countryVisit of countryVisits">
+        <td>{{ countryVisit.country }}</td> 
+        <td>{{ countryVisit.totalVisits }}</td> 
+      </tr>
+    </tbody>
+  </table>
+  

@@ -9,8 +9,8 @@ namespace UrlShort.Models
 {
     public class Stat
     {
-        public int Id { get; set; } 
-  
+        public int Id { get; set; }
+
         public string IpAddress { get; set; } = "";
         public string UserAgent { get; set; } = "";
         public string DeviceFamily { get; set; } = "";
@@ -18,9 +18,9 @@ namespace UrlShort.Models
         public string BrowserVersion { get; set; } = "";
         public string OperatingSystem { get; set; } = "";
         public string OperatingSystemVirsion { get; set; } = "";
-
         public int ShortUrlId { get; set; }
         public virtual UrlManagment ShortUrl { get; set; }
+        public DateTime CreatedDate { get; set; }
 
     }
 }

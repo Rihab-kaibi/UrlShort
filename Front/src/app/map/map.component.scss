@@ -1,0 +1,28 @@
+.map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 30px;
+  }
+  
+  .map-frame {
+    border: 2px solid rgb(9, 113, 131);
+    height: 100%;
+  }
+  
+  #map {
+    height: 50%;
+  }
+
+  /* Add this CSS to your map.component.css file */
+//new
+
+
+#map {
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+}
